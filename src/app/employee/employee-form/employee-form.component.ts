@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EmployeeService } from '../services/employee.service';
 
@@ -21,7 +21,7 @@ export class EmployeeFormComponent implements OnInit {
     { Id: 2, Name: 'USA' }
   ]
   constructor(public dialogRef: MatDialogRef<EmployeeFormComponent>, @Inject(MAT_DIALOG_DATA) public data: any, 
-  private fb: FormBuilder,private employeeService:EmployeeService) { }
+  private fb: FormBuilder,private employeeService:EmployeeService,private _snackBar: MatSnackBar) { }
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -32,13 +32,13 @@ export class EmployeeFormComponent implements OnInit {
       firstName: ['abcd', [Validators.required]],
       lastName: ['defd', [Validators.required]],
       email: ['abc@c.com', [Validators.required]],
-      dateOfBirth: ['', [Validators.required]],
+      dateOfBirth: [new Date(), [Validators.required]],
       salary: ['5000', [Validators.required]],
       department: [1, [Validators.required]],
       country: [2, [Validators.required]]
     })
   }
-
+  durationInSeconds = 5;
   onSubmit() {
     this.employeeForm.patchValue({
       dateOfBirth: this.employeeForm.value.dateOfBirth.toISOString()
@@ -47,7 +47,23 @@ export class EmployeeFormComponent implements OnInit {
     this.employeeService.addEmployee(this.employeeForm.value).subscribe((data) => {
       console.log(data);
       this.dialogRef.close();
+      this._snackBar.openFromComponent(PizzaPartyComponent, {
+        duration: this.durationInSeconds * 1000,
+      });
     })
   }
 
 }
+
+@Component({
+  selector: 'snack-bar-component-example-snack',
+  template: `<span class="example-pizza-party">
+  Employee Added Successfully
+</span>`,
+  styles: [`
+    .example-pizza-party {
+      color: hotpink;
+    }
+  `],
+})
+export class PizzaPartyComponent {}
