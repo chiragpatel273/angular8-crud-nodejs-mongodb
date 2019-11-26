@@ -1,0 +1,52 @@
+<h1 mat-dialog-title>Add Employee</h1>
+<form class="example-form" [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+    <div class="example-container">
+        <mat-form-field>
+            <input matInput placeholder="FirstName" formControlName="firstName" required>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="LastName" formControlName="lastName" required>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Email" formControlName="email" required>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput [matDatepicker]="picker" formControlName="dateOfBirth"
+                placeholder="Date Of Birth" required>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="salary" formControlName="salary" required>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Department</mat-label>
+            <mat-select formControlName="department" required>
+                <mat-option>Select Department</mat-option>
+                <mat-option *ngFor="let department of departments" [value]="department.Id">
+                    {{department.Name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Country</mat-label>
+            <mat-select formControlName="country" required>
+                <mat-option>Select Country</mat-option>
+                <mat-option *ngFor="let c of countries" [value]="c.Id">
+                    {{c.Name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+    </div>
+    <div mat-dialog-actions>
+        <button mat-raised-button color="primary" [disabled]="employeeForm.invalid">Add Employee</button>
+        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+    </div>
+</form>
