@@ -36,6 +36,10 @@ export class AppComponent implements OnInit {
     });
   }
 
+  refreshEmployee(){
+    this.getEmployees();
+  }
+
 
 }
 

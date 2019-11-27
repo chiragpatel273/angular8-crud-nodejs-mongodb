@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 import { MatTableDataSource, MatDialog } from '@angular/material';
 import { EmployeeFormComponent } from '../employee-form/employee-form.component';
 
@@ -12,6 +12,7 @@ import { EmployeeFormComponent } from '../employee-form/employee-form.component'
 export class EmployeeListComponent implements OnInit,OnChanges {
 
   @Input() employees:any[];
+  @Output() refreshEmployee = new EventEmitter<any>();
   
   displayedColumns: string[] = ['firstName', 'lastName', 'email', 'dateOfBirth','salary','department','country','action'];
   dataSource;
@@ -41,7 +42,7 @@ export class EmployeeListComponent implements OnInit,OnChanges {
     });
  
     dialogRef.afterClosed().subscribe(result => {
-      this.dataSource = new MatTableDataSource(this.employees);
+      this.refreshEmployee.emit();
       // if(result.event == 'Add'){
       //   this.addRowData(result.data);
       // }else if(result.event == 'Update'){

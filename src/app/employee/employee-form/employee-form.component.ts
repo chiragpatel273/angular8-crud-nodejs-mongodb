@@ -10,15 +10,15 @@ import { EmployeeService } from '../services/employee.service';
 })
 export class EmployeeFormComponent implements OnInit {
   employeeForm: FormGroup;
-
+  btnLabel;
   departments = [
-    { Id: 1, Name: 'IT' },
-    { Id: 2, Name: 'COMP' }
+    { Id: 'IT', Name: 'IT' },
+    { Id: 'COMP', Name: 'COMP' }
   ]
 
   countries = [
-    { Id: 1, Name: 'India' },
-    { Id: 2, Name: 'USA' }
+    { Id: 'India', Name: 'India' },
+    { Id: 'USA', Name: 'USA' }
   ]
   constructor(public dialogRef: MatDialogRef<EmployeeFormComponent>, @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder, private employeeService: EmployeeService, private _snackBar: MatSnackBar) { }
@@ -30,6 +30,7 @@ export class EmployeeFormComponent implements OnInit {
   ngOnInit() {
 
     console.log(this.data);
+    this.btnLabel = this.data.action;
 
 
 
@@ -65,8 +66,8 @@ export class EmployeeFormComponent implements OnInit {
         email: ['abc@c.com', [Validators.required]],
         dateOfBirth: [new Date(), [Validators.required]],
         salary: ['5000', [Validators.required]],
-        department: [1, [Validators.required]],
-        country: [2, [Validators.required]]
+        department: ['IT', [Validators.required]],
+        country: ['India', [Validators.required]]
       })
     }
 

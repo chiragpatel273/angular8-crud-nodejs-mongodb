@@ -1,4 +1,4 @@
 <div class="main">
-  <button mat-raised-button color="primary" (click)="openDialog()">New Employee</button><br><br>
-  <app-employee-list *ngIf="employees" [employees]="employees"></app-employee-list>
+  <button mat-raised-button color="primary" (click)="openDialog()">Add Employee</button><br><br>
+  <app-employee-list *ngIf="employees" [employees]="employees" (refreshEmployee)="refreshEmployee()"></app-employee-list>
 </div>
