@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(EmployeeFormComponent, {
       width: '450px',
-      // data: {name: this.name, animal: this.animal}
+      data: {action:'Add'}
     });
 
     dialogRef.afterClosed().subscribe(result => {

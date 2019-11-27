@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { EmployeeListComponent } from './employee/employee-list/employee-list.component';
 import { HttpClientModule } from '@angular/common/http';
-import { EmployeeFormComponent, PizzaPartyComponent } from './employee/employee-form/employee-form.component';
+import { EmployeeFormComponent, NotifyComponent } from './employee/employee-form/employee-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -14,7 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppComponent,
     EmployeeListComponent,
     EmployeeFormComponent,
-    PizzaPartyComponent
+    NotifyComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     MaterialModule
   ],
-  entryComponents:[EmployeeFormComponent,PizzaPartyComponent],
+  entryComponents:[EmployeeFormComponent,NotifyComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

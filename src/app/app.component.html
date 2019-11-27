@@ -1,4 +1,4 @@
 <div class="main">
   <button mat-raised-button color="primary" (click)="openDialog()">New Employee</button><br><br>
-  <app-employee-list [employees]="employees"></app-employee-list>
+  <app-employee-list *ngIf="employees" [employees]="employees"></app-employee-list>
 </div>

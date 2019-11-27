@@ -16,4 +16,9 @@ export class EmployeeService {
   addEmployee(employee):Observable<any>{
     return this.http.post<any>(`${this.baseUrl}/create`,employee)
   }
+
+  updateEmployee(employee):Observable<any>{
+    console.log(employee);
+    return this.http.put<any>(`${this.baseUrl}/update/${employee._id}`,employee)
+  }
 }
