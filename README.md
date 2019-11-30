@@ -12,7 +12,7 @@ Run `mongorestore  db/crud/ --db=crud`. This will add sample collection named em
 
 ## Node API
 
-start api with following command:
+Start api with following command:
 `node server.js`
 
 ## Development server
