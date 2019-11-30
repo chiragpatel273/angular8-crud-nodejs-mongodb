@@ -5,5 +5,5 @@ module.exports = function(router) {
     router.get('/get', Employees.getEmployees);
     router.get('/get/:name', Employees.getEmployee);
     router.put('/update/:id', Employees.updateEmployee);
-    router.delete('/remove/:id', Employees.removeEmployee);
+    router.post('/remove/:id', Employees.removeEmployee);
 }

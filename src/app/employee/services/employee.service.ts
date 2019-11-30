@@ -21,4 +21,10 @@ export class EmployeeService {
     console.log(employee);
     return this.http.put<any>(`${this.baseUrl}/update/${employee._id}`,employee)
   }
+
+  deleteEmployee(id):Observable<any>{
+    console.log(id);
+    return this.http.post<any>(`${this.baseUrl}/remove/${id}`,'')
+  }
+
 }
