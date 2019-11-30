@@ -31,4 +31,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ![alt text](https://raw.githubusercontent.com/chiragpatel273/angular-crud-nodejs-mongodb/master/src/assets/images/list.PNG)
 
-![alt text](https://raw.githubusercontent.com/chiragpatel273/angular-crud-nodejs-mongodb/master/src/assets/images/add.PNG)
+![alt text](https://raw.githubusercontent.com/chiragpatel273/angular-crud-nodejs-mongodb/master/src/assets/images/Add.PNG)
