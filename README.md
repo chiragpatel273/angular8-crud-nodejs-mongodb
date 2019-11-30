@@ -1,6 +1,17 @@
-# CRUD App with Front End Angular(Material UI), Back End Node and Database(MongoDB). 
+# CRUD App with Angular8(Material UI), NodeJS and Database(MongoDB). 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.19.
+
+## Database Setup
+
+There is db backup in db/crud folder.First Create Database Named Crud in mongodb.
+
+Run `mongorestore  db/crud/ --db=crud`. This will add sample collection named employee in crud database with sample data.
+
+## Node API
+
+start api with following command:
+`node server.js`
 
 ## Development server
 
@@ -13,4 +24,5 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
 
