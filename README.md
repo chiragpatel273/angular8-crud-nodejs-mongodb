@@ -1,6 +1,8 @@
 # CRUD App with Angular8(Material UI), NodeJS and Database(MongoDB). 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.19.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.19. 
+
+Run `npm install` to get all required dependencies. 
 
 ## Database Setup
 
