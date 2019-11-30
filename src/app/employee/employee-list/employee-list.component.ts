@@ -79,7 +79,7 @@ export class EmployeeListComponent implements OnInit, OnChanges {
   </div>
   <div mat-dialog-actions>
     <button mat-raised-button color="primary" (click)="onYesClick()">Yes</button>
-    <button mat-button [mat-dialog-close]="false">No</button>
+    <button mat-raised-button [mat-dialog-close]="false">No</button>
   </div>`
 })
 export class DeleteDialog {
