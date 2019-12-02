@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EmployeeService } from '../services/employee.service';
+import { NotifyComponent } from '../notify/notify.component';
 
 @Component({
   selector: 'app-employee-form',
@@ -89,6 +90,7 @@ export class EmployeeFormComponent implements OnInit {
         this.dialogRef.close();
         this._snackBar.openFromComponent(NotifyComponent, {
           duration: this.durationInSeconds * 1000,
+          data:'Updated'
         });
       })
     }
@@ -98,25 +100,10 @@ export class EmployeeFormComponent implements OnInit {
         this.dialogRef.close();
         this._snackBar.openFromComponent(NotifyComponent, {
           duration: this.durationInSeconds * 1000,
+          data:'Added'
         });
       })
     }
-
-
-
   }
 
 }
-
-@Component({
-  selector: 'notify-component',
-  template: `<span class="notify">
-  Employee Added Successfully
-</span>`,
-  styles: [`
-    .notify {
-      color: hotpink;
-    }
-  `],
-})
-export class NotifyComponent { }

@@ -1,7 +1,9 @@
 import { Component, OnInit, Input, OnChanges, Output, EventEmitter, Inject } from '@angular/core';
-import { MatTableDataSource, MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatTableDataSource, MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 import { EmployeeFormComponent } from '../employee-form/employee-form.component';
 import { EmployeeService } from '../services/employee.service';
+import { DialogComponent } from '../dialog/dialog.component';
+import { NotifyComponent } from '../notify/notify.component';
 
 
 
@@ -17,7 +19,7 @@ export class EmployeeListComponent implements OnInit, OnChanges {
 
   displayedColumns: string[] = ['firstName', 'lastName', 'email', 'dateOfBirth', 'salary', 'department', 'country', 'action'];
   dataSource;
-  constructor(public dialog: MatDialog) {
+  constructor(public dialog: MatDialog,private _snackBar: MatSnackBar) {
 
   }
 
@@ -33,7 +35,7 @@ export class EmployeeListComponent implements OnInit, OnChanges {
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-
+  durationInSeconds = 5;
   openDialog(action, obj) {
     console.log(obj);
     obj.action = action;
@@ -54,42 +56,23 @@ export class EmployeeListComponent implements OnInit, OnChanges {
         // }
       });
     }
-  
-    else{
-      const dialogRef = this.dialog.open(DeleteDialog, {
+
+    else {
+      const dialogRef = this.dialog.open(DialogComponent, {
         width: '300px',
         data: obj._id
       });
 
       dialogRef.afterClosed().subscribe(result => {
         this.refreshEmployee.emit();
+
+        this._snackBar.openFromComponent(NotifyComponent, {
+          duration: this.durationInSeconds * 1000,
+          data:'Deleted'
+        });
+
       });
     }
-
-}
-    
-    
-
-}
-
-@Component({
-  template: `<h1 mat-dialog-title>Delete Employee</h1>
-  <div mat-dialog-content>
-    <p>Are you sure want to delete ?</p>
-  </div>
-  <div mat-dialog-actions>
-    <button mat-raised-button color="primary" (click)="onYesClick()">Yes</button>
-    <button mat-raised-button [mat-dialog-close]="false">No</button>
-  </div>`
-})
-export class DeleteDialog {
-  constructor(public dialogRef: MatDialogRef<EmployeeFormComponent>, @Inject(MAT_DIALOG_DATA) public data: any,private employeeService:EmployeeService
-  ) { }
-  onYesClick(){
-    this.employeeService.deleteEmployee(this.data).subscribe((data) => {
-      console.log(data);
-      this.dialogRef.close();
-    })
-    
   }
 }
+
